@@ -60,13 +60,14 @@ public class Excel3000 {
     public Excel3000 evaluate() {
         Excel3000 excel = new Excel3000();
         Table tab = excel.getTable();
+        Pattern pattern = Pattern.compile(REGEX3);
+        Matcher matcher;
         Set<Table.Cell<Integer, Integer, String>> cellSet = table.cellSet();
         for (Table.Cell<Integer, Integer, String> cell : cellSet) {
             if (cell.getValue().charAt(0) == '=') {
                 String[] split = cell.getValue().split("=");
                 if (split[1] != null && split[1].matches(REGEX2)) {
-                    Pattern pattern = Pattern.compile(REGEX3);
-                    Matcher matcher = pattern.matcher(split[1]);
+                    matcher = pattern.matcher(split[1]);
                     while (matcher.find()) {
                         String substr = matcher.group().substring(1);
                         split[1] = split[1].replace(matcher.group(), getCellAt(substr));
