@@ -96,7 +96,7 @@ public class Excel3000 {
                 Cell cell = row.createCell(j);
                 System.out.println(table.get(i, j));
                 cell.setCellValue(table.get(i, j));
-                System.out.printf("row: %s col: %s val:%s\n", i, j, table.get(i, j));
+                System.out.printf("row: %s col: %s val:%s%n", i, j, table.get(i, j));
             }
 
         }
